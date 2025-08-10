@@ -1,0 +1,325 @@
+:root {
+    /* Futuristic Light Mode Colors */
+    --bg-primary: #eef2f8; /* A light, clean background */
+    --bg-secondary: #ffffff; /* Crisp white for containers */
+    --text-primary: #1f2937; /* Dark text for contrast */
+    --text-secondary: #4b5563; /* Subdued text for details */
+    --border-color: #d1d5db; /* Light gray borders */
+    --button-bg-light: #f3f4f6; /* Very light button background */
+    --button-text-light: #4b5563; /* Darker text for inactive buttons */
+    --button-hover-light: #e5e7eb; /* Subtle hover effect */
+    --message-bg-self: #2563eb; /* A vibrant blue for user messages */
+    --message-text-self: #ffffff;
+    --message-bg-other: #e5e7eb; /* Light gray for bot messages */
+    --message-text-other: #1f2937;
+    --online-status: #10b981; /* A bright green */
+    --input-border: #9ca3af;
+    --input-focus-ring: #2563eb;
+    --input-text: #1f2937;
+    --input-placeholder: #6b7280;
+    --active-mode-bg: #eff6ff; /* A very light blue for active state */
+    --active-mode-text: #2563eb; /* Vibrant blue */
+    --inactive-mode-text: #6b7280;
+    --inactive-mode-hover: #f3f4f6;
+    --legal-agreement-text: #4b5563; /* Use this for the agreement text */
+    --legal-agreement-header: #1f2937;
+    --mode-button-bg: transparent;
+    --mode-button-text: #6b7280;
+    --mode-button-hover-bg: #f3f4f6;
+    --mode-button-hover-text: #6b7280;
+    --mode-button-active-bg: #eff6ff;
+    --mode-button-active-text: #2563eb;
+    --mode-button-active-border: #2563eb;
+}
+
+.dark-mode {
+    /* Dark Mode Colors with improved visibility */
+    --bg-primary: #1a202c; /* A deep charcoal background */
+    --bg-secondary: #2d3748; /* Dark blue-gray for containers */
+    --text-primary: #e2e8f0; /* Off-white text for high contrast */
+    --text-secondary: #a0aec0; /* Lighter gray for secondary text */
+    --border-color: #4a5568; /* Dark border */
+    --button-bg-light: #4a5568;
+    --button-text-light: #e2e8f0;
+    --button-hover-light: #616e7f;
+    --message-bg-self: #4299e1; /* A brighter blue */
+    --message-text-self: #ffffff;
+    --message-bg-other: #4a5568;
+    --message-text-other: #e2e8f0;
+    --online-status: #48bb78; /* A vibrant green */
+    --input-border: #616e7f;
+    --input-focus-ring: #4299e1;
+    --input-text: #e2e8f0;
+    --input-placeholder: #a0aec0;
+    --active-mode-bg: #2a4365;
+    --active-mode-text: #90cdf4;
+    --inactive-mode-text: #a0aec0;
+    --inactive-mode-hover: #2d3748;
+    --legal-agreement-text: #a0aec0;
+    --legal-agreement-header: #e2e8f0;
+    --mode-button-bg: #2d3748;
+    --mode-button-text: #a0aec0;
+    --mode-button-hover-bg: #4a5568;
+    --mode-button-hover-text: #a0aec0;
+    --mode-button-active-bg: #2a4365;
+    --mode-button-active-text: #90cdf4;
+    --mode-button-active-border: #90cdf4;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.phone-container {
+    width: 375px;
+    height: 812px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    border-radius: 2.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05), 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    overflow: hidden;
+    position: relative;
+}
+
+/* New styles for legal agreement text */
+#legal-agreement-container h2 {
+    color: var(--legal-agreement-header);
+}
+
+#legal-agreement-container p {
+    color: var(--legal-agreement-text);
+}
+
+.hidden {
+    display: none;
+}
+
+#chat-header {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.25rem 1rem;
+}
+
+#chat-header h2 {
+    color: var(--text-primary);
+    font-weight: 700;
+}
+
+#chat-header .text-gray-500 {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+#chat-header .bg-green-500 {
+    background-color: var(--online-status);
+}
+
+#chat-header .text-gray-600 {
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.flex.justify-around.p-2 {
+    background-color: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    padding: 0.5rem;
+}
+
+#ai-talk-mode-btn, #faq-mode-btn, #history-mode-btn {
+    border-radius: 0.5rem;
+    font-weight: 600;
+    background-color: var(--mode-button-bg);
+    color: var(--mode-button-text);
+    border: 1px solid transparent;
+}
+
+#ai-talk-mode-btn.active, #faq-mode-btn.active, #history-mode-btn.active {
+    background-color: var(--mode-button-active-bg);
+    color: var(--mode-button-active-text);
+    box-shadow: none;
+    border: 1px solid var(--mode-button-active-border);
+}
+
+#ai-talk-mode-btn:not(.active):hover, #faq-mode-btn:not(.active):hover, #history-mode-btn:not(.active):hover {
+    background-color: var(--mode-button-hover-bg);
+    color: var(--mode-button-hover-text);
+}
+
+.message-list-container,
+.faq-list-container,
+#history-list-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1rem;
+    scroll-behavior: smooth;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-primary);
+}
+
+#faq-header, #history-header {
+    margin-top: 0;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.faq-item, .history-item {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    padding: 1rem;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
+    text-align: left;
+    padding-left: 1.5rem;
+}
+
+.faq-item:hover, .history-item:hover {
+    background-color: var(--inactive-mode-hover);
+    transform: translateY(-1px);
+}
+
+.faq-item:active, .history-item:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+.history-item .text-base {
+    color: var(--text-primary); /* Ensure header text is visible */
+}
+
+.history-item .text-sm {
+    color: var(--text-secondary); /* Ensure snippet text is visible */
+}
+
+.message-bubble {
+    border-radius: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.message-bubble.bg-blue-500 {
+    background-color: var(--message-bg-self);
+    color: var(--message-text-self);
+    border-bottom-right-radius: 0;
+}
+
+.message-bubble.bg-gray-200 {
+    background-color: var(--message-bg-other);
+    color: var(--message-text-other);
+    border-bottom-left-radius: 0;
+}
+
+#save-chat-button,
+#clear-chat-button,
+#dark-mode-toggle {
+    background-color: var(--button-bg-light);
+    color: var(--button-text-light);
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+#save-chat-button:hover,
+#clear-chat-button:hover,
+#dark-mode-toggle:hover {
+    background-color: var(--button-hover-light);
+}
+
+#chat-input-container {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    align-items: center;
+}
+
+#message-input {
+    border: 1px solid var(--input-border);
+    background-color: var(--bg-secondary);
+    color: var(--input-text);
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+}
+
+#message-input::placeholder {
+    color: var(--input-placeholder);
+}
+
+#message-input:focus {
+    border-color: var(--input-focus-ring);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.3);
+}
+
+#send-button {
+    background-color: var(--message-bg-self);
+    color: var(--message-text-self);
+    border-radius: 0.5rem;
+    font-weight: 600;
+}
+
+#send-button:hover {
+    background-color: #1d4ed8;
+}
+
+.message-list-container::-webkit-scrollbar,
+.faq-list-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.message-list-container::-webkit-scrollbar-track,
+.faq-list-container::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+    border-radius: 10px;
+}
+
+.message-list-container::-webkit-scrollbar-thumb,
+.faq-list-container::-webkit-scrollbar-thumb {
+    background: var(--text-secondary);
+    border-radius: 10px;
+}
+
+.message-list-container::-webkit-scrollbar-thumb:hover,
+.faq-list-container::-webkit-scrollbar-thumb:hover {
+    background: var(--text-primary);
+}
+
+@keyframes blink {
+    0% {
+        opacity: 0.2;
+    }
+    20% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+.typing-dot {
+    animation: blink 1.4s infinite linear;
+    background-color: var(--text-secondary);
+}
+
+.typing-dot:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.typing-dot:nth-child(3) {
+    animation-delay: 0.4s;
+}

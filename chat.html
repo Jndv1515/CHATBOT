@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Service</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="chat.css">
+</head>
+<body>
+
+    <div class="w-full bg-slate-100 p-8 flex items-center justify-center min-h-screen">
+        
+        <div id="legal-agreement-container" class="phone-container flex-col p-8 items-center justify-center text-center">
+            <h2 class="text-2xl font-bold text-gray-800 mb-4">Chatbot Agreement</h2>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+                By using this chat, you agree that you are interacting with a computer-generated bot. The information provided is for general assistance only.
+            </p>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+                For a more in-depth conversation or assistance from a human, please submit a ticket on the homepage of our website and wait for an available agent to respond.
+            </p>
+            <button id="agree-button" class="w-full py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out shadow-md">
+                I Agree, Start Chat
+            </button>
+        </div>
+
+        <div id="chat-container" class="phone-container hidden">
+            <div id="chat-header" class="flex items-center p-4 bg-white border-b border-gray-200">
+                <img src="bot_icon.png" alt="Helpr's Icon" class="w-12 h-12 mr-3">
+                <div class="flex-1">
+                    <h2 class="text-lg font-bold text-gray-800">Helpr</h2>
+                    <div class="flex items-center text-sm text-gray-500">
+                        <span class="w-2 h-2 bg-green-500 rounded-full mr-1"></span>
+                        <span class="text-green-500 font-semibold mr-2">Online</span>
+                        <span class="text-gray-600 font-semibold">Credits: <span id="credit-counter">10</span></span>
+                    </div>
+                </div>
+                <div class="flex space-x-2">
+                    <button id="dark-mode-toggle" class="p-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors duration-200 ease-in-out shadow-sm">
+                        <svg id="light-mode-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="M4.93 4.93l1.41 1.41"/><path d="M17.66 17.66l1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="M4.93 19.07l1.41-1.41"/><path d="M17.66 6.34l1.41-1.41"/></svg>
+                        <svg id="dark-mode-icon" class="hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-moon"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+                    </button>
+                    <button id="save-chat-button" class="p-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors duration-200 ease-in-out shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-save"><path d="M15.2 21H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8l5 5v11a2 2 0 0 1-2 2z"/><path d="M17 21v-7a2 2 0 0 0-2-2H9a2 2 0 0 0-2 2v7"/><path d="M7 3v4a2 2 0 0 0 2 2h4"/></svg>
+                    </button>
+                    <button id="clear-chat-button" class="p-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-colors duration-200 ease-in-out shadow-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="flex p-2">
+                <button id="ai-talk-mode-btn" class="flex-1 py-2 mx-1 rounded-lg font-semibold text-blue-600 bg-blue-100 hover:bg-blue-200 transition-colors duration-200 ease-in-out">
+                    AI Talk
+                </button>
+                <button id="faq-mode-btn" class="flex-1 py-2 mx-1 rounded-lg font-semibold text-gray-600 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
+                    FAQ
+                </button>
+                <button id="history-mode-btn" class="flex-1 py-2 mx-1 rounded-lg font-semibold text-gray-600 hover:bg-gray-100 transition-colors duration-200 ease-in-out">
+                    History
+                </button>
+            </div>
+
+            <div class="flex-1 overflow-hidden relative">
+                <div id="message-list-container" class="message-list-container absolute inset-0">
+                    </div>
+
+                <div id="faq-list-container" class="faq-list-container absolute inset-0 hidden">
+                    </div>
+
+                <div id="history-list-container" class="history-list-container absolute inset-0 hidden">
+                </div>
+            </div>
+
+            <div id="chat-input-container" class="p-4 bg-white border-t border-gray-200 flex items-center">
+                <input type="text" id="message-input" placeholder="Type your message..." class="flex-1 p-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-700 placeholder-gray-400">
+                <button id="send-button" class="ml-3 px-5 py-3 bg-blue-600 text-white rounded-xl font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition duration-200 ease-in-out shadow-md">
+                    Send
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="chat.js"></script>
+</body>
+</html>
